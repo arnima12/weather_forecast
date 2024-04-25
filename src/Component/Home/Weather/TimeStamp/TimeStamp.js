@@ -28,7 +28,6 @@ const TimeStamp = ({ onTimeCategoryChange }) => {
         } else {
             timeCategory = 'Night'
         }
-
         const formattedTime = currentTime.toLocaleString().split(' ')[1] + " " + currentTime.toLocaleString().split(' ')[2];
         setTime(formattedTime);
         onTimeCategoryChange(timeCategory)

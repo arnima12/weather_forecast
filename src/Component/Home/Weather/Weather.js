@@ -41,7 +41,7 @@ const Weather = () => {
             <div className="grid gap-12 md:grid-cols-2 md:gap-48 mt-8 overflow-hidden">
                 <div className="flex flex-col justify-center gap-4">
                     <SearchLocation onAddressChange={handleAddressChange} onLatitudeChange={handleLatitudeChange} onLongitudeChange={handleLongitudeChange} />
-                    <h1 className={`text-5xl font-bold ${timeCategory === 'morning' || timeCategory === 'afternoon' ? 'text-black' : 'text-white'}`}>Good {timeCategory}</h1>
+                    <h1 className={`text-5xl font-bold my-8 ${timeCategory === 'morning' || timeCategory === 'afternoon' ? 'text-black' : 'text-white'}`}>Good {timeCategory} !</h1>
                     <h3 className={`text-3xl font-bold ${timeCategory === 'morning' || timeCategory === 'afternoon' ? 'text-black' : 'text-white'}`}><Temperature latitude={latitude} longitude={longitude} /></h3>
                     <h2 className={`text-4xl font-semibold ${timeCategory === 'morning' || timeCategory === 'afternoon' ? 'text-black' : 'text-white'}`}>{address}</h2>
                     <TimeStamp onTimeCategoryChange={handleTimeCategoryChange}>
@@ -51,14 +51,14 @@ const Weather = () => {
                 </div>
                 <div className='flex flex-col gap-4'>
                     <div className="w-96 shadow-2xl text-white pb-4" style={{ "backgroundColor": 'rgba(0, 0, 0, 0.5)' }}>
-                        <h4>Today's weather condition</h4>
+                        <h4 className="font-bold">Today's Weather Forecast</h4>
                         <hr />
                         <div className="mt-4">
                             <Condition latitude={latitude} longitude={longitude} />
                         </div>
                     </div>
                     <div className="w-96 shadow-2xl text-white pb-4" style={{ "backgroundColor": 'rgba(0, 0, 0, 0.5)' }}>
-                        <h4>Prayer Time</h4>
+                        <h4 className="font-bold">Prayer Time</h4>
                         <hr />
                         <div className="mt-4">
                             <PrayerTime latitude={latitude} longitude={longitude} />

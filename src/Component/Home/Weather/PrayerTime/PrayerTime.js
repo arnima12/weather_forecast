@@ -63,14 +63,14 @@ const PrayerTime = ({ latitude, longitude }) => {
         <div className="grid grid-cols-2">
             {prayerTime &&
                 <>
-                    <div>
+                    <div className="text-left ml-16">
                         <h3>Fajr</h3>
                         <h3>Dhuhr</h3>
                         <h3>Asr</h3>
                         <h3>Maghrib</h3>
                         <h3>Isha</h3>
                     </div>
-                    <div>
+                    <div className="text-left ml-16">
                         <h3>{prayerTime.Fajr}</h3>
                         <h3>{prayerTime.Dhuhr}</h3>
                         <h3>{prayerTime.Asr}</h3>

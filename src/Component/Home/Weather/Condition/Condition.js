@@ -51,14 +51,14 @@ const Condition = ({ latitude, longitude }) => {
     };
     return (
         <div className="grid grid-cols-2 gap-4">
-            <div>
+            <div className="text-left ml-16">
                 <h3>Feels Like </h3>
                 <h3>Wind Speed</h3>
                 <h3>Humidity</h3>
                 <h3>Sunrise</h3>
                 <h3>Sunset</h3>
             </div>
-            <div>
+            <div className="text-left ml-16">
                 <h3>{feelsLike} &deg;C</h3>
                 <h3>{windSpeed}</h3>
                 <h3>{humidity}</h3>
