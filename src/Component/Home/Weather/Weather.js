@@ -41,11 +41,13 @@ const Weather = () => {
             <div className="grid gap-12 md:grid-cols-2 md:gap-48 mt-8 overflow-hidden">
                 <div className="flex flex-col justify-center gap-4">
                     <SearchLocation onAddressChange={handleAddressChange} onLatitudeChange={handleLatitudeChange} onLongitudeChange={handleLongitudeChange} />
-                    <h1 className={`text-5xl font-bold my-8 ${timeCategory === 'morning' || timeCategory === 'afternoon' ? 'text-black' : 'text-white'}`}>Good {timeCategory} !</h1>
-                    <h3 className={`text-3xl font-bold ${timeCategory === 'morning' || timeCategory === 'afternoon' ? 'text-black' : 'text-white'}`}><Temperature latitude={latitude} longitude={longitude} /></h3>
-                    <h2 className={`text-4xl font-semibold ${timeCategory === 'morning' || timeCategory === 'afternoon' ? 'text-black' : 'text-white'}`}>{address}</h2>
+                    <h1 className={`text-5xl font-bold my-8 ${timeCategory === 'Morning' || timeCategory === 'Afternoon' ? 'text-black' : 'text-white'}`}>
+                        Good {timeCategory} !
+                    </h1>
+                    <h3 className={`text-3xl font-bold ${timeCategory === 'Morning' || timeCategory === 'Afternoon' ? 'text-black' : 'text-white'}`}><Temperature latitude={latitude} longitude={longitude} timeCategory={timeCategory} /></h3>
+                    <h2 className={`text-4xl font-semibold ${timeCategory === 'Morning' || timeCategory === 'Afternoon' ? 'text-black' : 'text-white'}`}>{address}</h2>
                     <TimeStamp onTimeCategoryChange={handleTimeCategoryChange}>
-                        <div className={`text-2xl font-semibold ${timeCategory === 'morning' || timeCategory === 'afternoon' ? 'text-black' : 'text-white'}`}>
+                        <div className={`text-2xl font-semibold ${timeCategory === 'Morning' || timeCategory === 'Afternoon' ? 'text-black' : 'text-white'}`}>
                         </div>
                     </TimeStamp>
                 </div>

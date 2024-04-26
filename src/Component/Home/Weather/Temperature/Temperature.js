@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { BsCloudDrizzleFill } from 'react-icons/bs';
-import { FaCloud, FaCloudSun } from 'react-icons/fa';
-import { IoIosRainy, IoMdSunny } from 'react-icons/io';
+import { FaCloud, FaCloudMoon, FaCloudSun } from 'react-icons/fa';
+import { IoIosMoon, IoIosRainy, IoMdSunny } from 'react-icons/io';
 import { RiMistFill } from 'react-icons/ri';
 
-const Temperature = ({ latitude, longitude }) => {
+const Temperature = ({ latitude, longitude, timeCategory }) => {
     console.log("latitude", latitude)
     console.log("longitude", longitude)
     const [temperature, setTemperature] = useState(null);
@@ -44,12 +44,12 @@ const Temperature = ({ latitude, longitude }) => {
                 <p>
                     {weatherDescription && (
                         <>
-                            {weatherDescription.includes("Haze") && <FaCloudSun />}
+                            {(weatherDescription.includes("Haze") && (timeCategory === "Morning" || timeCategory === "Afternoon")) ? <FaCloudSun /> : (weatherDescription.includes("Haze") && (timeCategory === "Night" || timeCategory === "Evening")) ? <FaCloudMoon /> : null}
                             {weatherDescription.includes("Rain") && <IoIosRainy />}
                             {weatherDescription.includes("Clouds") && <FaCloud />}
                             {weatherDescription.includes("Drizzle") && <BsCloudDrizzleFill />}
                             {weatherDescription.includes("Mist") && <RiMistFill />}
-                            {weatherDescription.includes("Clear") && <IoMdSunny />}
+                            {(weatherDescription.includes("Clear") && (timeCategory === "Morning" || timeCategory === "Afternoon")) ? <IoMdSunny /> : (weatherDescription.includes("Clear") && (timeCategory === "Night" || timeCategory === "Evening")) ? <IoIosMoon /> : null}
                         </>
                     )}
                 </p>

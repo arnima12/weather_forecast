@@ -3,7 +3,7 @@ import Weather from './Home/Weather/Weather';
 
 const Home = () => {
     return (
-        <div>
+        <div className="font-sans">
             <Weather />
         </div>
     );
