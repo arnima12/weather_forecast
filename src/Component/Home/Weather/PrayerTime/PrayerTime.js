@@ -4,6 +4,7 @@ const PrayerTime = ({ latitude, longitude }) => {
     console.log("latitude", latitude)
     console.log("longitude", longitude)
     const [prayerTime, setPrayerTime] = useState(null);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         if (latitude !== null && longitude !== null) {
             getPrayerTime();
@@ -57,28 +58,41 @@ const PrayerTime = ({ latitude, longitude }) => {
         } catch (error) {
             console.error('Error fetching prayer time:', error);
 
+        } finally {
+            setLoading(false)
         }
     }
     return (
-        <div className="grid grid-cols-2">
-            {prayerTime &&
-                <>
-                    <div className="text-left ml-16">
-                        <h3>Fajr</h3>
-                        <h3>Dhuhr</h3>
-                        <h3>Asr</h3>
-                        <h3>Maghrib</h3>
-                        <h3>Isha</h3>
-                    </div>
-                    <div className="text-left ml-16">
-                        <h3>{prayerTime.Fajr}</h3>
-                        <h3>{prayerTime.Dhuhr}</h3>
-                        <h3>{prayerTime.Asr}</h3>
-                        <h3>{prayerTime.Maghrib}</h3>
-                        <h3>{prayerTime.Isha}</h3>
-                    </div>
-                </>}
+        <div>
+            {loading ?
+                <div
+                    class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
+                    role="status">
+                    <span
+                        class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+                    >Loading...</span>
+                </div>
+                :
+                <div className="grid grid-cols-2">
+                    {prayerTime &&
+                        <>
+                            <div className="text-left ml-16">
+                                <h3>Fajr</h3>
+                                <h3>Dhuhr</h3>
+                                <h3>Asr</h3>
+                                <h3>Maghrib</h3>
+                                <h3>Isha</h3>
+                            </div>
+                            <div className="text-left ml-16">
+                                <h3>{prayerTime.Fajr}</h3>
+                                <h3>{prayerTime.Dhuhr}</h3>
+                                <h3>{prayerTime.Asr}</h3>
+                                <h3>{prayerTime.Maghrib}</h3>
+                                <h3>{prayerTime.Isha}</h3>
+                            </div>
+                        </>}
 
+                </div>}
         </div>
     );
 };

@@ -6,6 +6,7 @@ const Condition = ({ latitude, longitude }) => {
     const [humidity, setHumidity] = useState(null);
     const [sunriseTime, setSunriseTime] = useState(null);
     const [sunsetTime, setSunsetTime] = useState(null);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         if (latitude !== null && longitude !== null) {
             getCurrentTemperature();
@@ -47,24 +48,39 @@ const Condition = ({ latitude, longitude }) => {
             setHumidity(null);
             setSunriseTime(null);
             setSunsetTime(null);
+        } finally {
+            setLoading(false)
         }
     };
     return (
-        <div className="grid grid-cols-2 gap-4">
-            <div className="text-left ml-16">
-                <h3>Feels Like </h3>
-                <h3>Wind Speed</h3>
-                <h3>Humidity</h3>
-                <h3>Sunrise</h3>
-                <h3>Sunset</h3>
-            </div>
-            <div className="text-left ml-16">
-                <h3>{feelsLike} &deg;C</h3>
-                <h3>{windSpeed}</h3>
-                <h3>{humidity}</h3>
-                <h3>{sunriseTime}</h3>
-                <h3>{sunsetTime}</h3>
-            </div>
+        <div>
+            {
+                loading ?
+                    <div
+                        class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
+                        role="status">
+                        <span
+                            class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+                        >Loading...</span>
+                    </div>
+                    :
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="text-left ml-16">
+                            <h3>Feels Like </h3>
+                            <h3>Wind Speed</h3>
+                            <h3>Humidity</h3>
+                            <h3>Sunrise</h3>
+                            <h3>Sunset</h3>
+                        </div>
+                        <div className="text-left ml-16">
+                            <h3>{feelsLike} &deg;C</h3>
+                            <h3>{windSpeed}</h3>
+                            <h3>{humidity}</h3>
+                            <h3>{sunriseTime}</h3>
+                            <h3>{sunsetTime}</h3>
+                        </div>
+                    </div>
+            }
         </div>
     );
 };
